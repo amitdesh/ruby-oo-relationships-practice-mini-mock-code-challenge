@@ -1,6 +1,6 @@
 class Author
 
-    attr_accessor :name, :books
+    attr_accessor :name
 
     @@all = []
 
@@ -14,15 +14,16 @@ class Author
     end
 
     def books
-        Book.all.select{|book| book if book.author == self}
+        BookAuthor.all.select{|pub| pub.book if pub.author == self}
     end
 
-    def write_book(title, word_count)
-        Book.new(title,self,word_count)
+    #In many-through relationship, this becomes a "co-author a book" function?
+    def write_book(book_obj)
+        BookAuthor.new(self, book_obj)
     end
 
     def total_words
-        books.sum{|book| book.word_count if book.author == self}
+        books.sum{|pub| pub.book.word_count if pub.author == self}
     end
 
     def self.most_words
