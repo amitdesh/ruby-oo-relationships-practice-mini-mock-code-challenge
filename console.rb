@@ -1,6 +1,6 @@
 require_relative './book'
 require_relative './author'
-require_relative './book-author'
+require_relative './book_author'
 require 'pry'
 
 

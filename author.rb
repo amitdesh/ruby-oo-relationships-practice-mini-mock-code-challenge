@@ -17,9 +17,9 @@ class Author
         BookAuthor.all.select{|pub| pub.book if pub.author == self}
     end
 
-    #In many-through relationship, this becomes a "co-author a book" function?
-    def write_book(book_obj)
-        BookAuthor.new(self, book_obj)
+    def write_book(title, word_count)
+        new_book = Book.new(title, word_count)
+        BookAuthor.new(self, new_book)
     end
 
     def total_words

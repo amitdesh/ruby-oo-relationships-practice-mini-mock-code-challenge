@@ -14,8 +14,8 @@ class Book
         @@all
     end
 
-    def author
-        BookAuthor.all.map{|pub| pub.author if pub.book == self}.compact
+    def authors
+        BookAuthor.all.select{|pub| pub.author if pub.book == self}
     end
 
 end
