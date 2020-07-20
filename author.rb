@@ -27,12 +27,9 @@ class Author
     end
 
     def self.most_words
-        word_count = {}
-        Author.all.each do |author|
-            words = author.total_words
-            word_count[author] = words
+        Author.all.max_by do |author|
+            author.total_words
         end
-        word_count.max_by{|key, value| value}
     end
 
 end
